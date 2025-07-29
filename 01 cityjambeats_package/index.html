@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="CityJamBeats - Industry-ready Afrobeat, Dancehall, TrapSoul beats. Browse & buy instant beats or get custom production." />
+  <title>CityJamBeats | Industry-Ready Beats</title>
+  <script src="https://unpkg.com/wavesurfer.js"></script>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #0c0c0c;
+      color: #f5f5f5;
+    }
+    .hero {
+      background: url('studio-bg.jpg') center/cover no-repeat;
+      background-blend-mode: multiply;
+      background-color: rgba(0, 255, 133, 0.08);
+      text-align: center;
+      padding: 120px 20px;
+    }
+    .hero h1 {
+      font-size: 3em;
+      font-weight: bold;
+    }
+    .hero p {
+      font-size: 1.2em;
+      color: #cfcfcf;
+      margin-top: 10px;
+    }
+    .buttons {
+      margin-top: 20px;
+    }
+    .buttons a {
+      padding: 12px 25px;
+      border-radius: 5px;
+      margin: 0 10px;
+      font-weight: bold;
+      text-decoration: none;
+      display: inline-block;
+    }
+    .buttons .browse {
+      background: #00ff85;
+      color: #000;
+    }
+    .buttons .custom {
+      border: 1px solid #00ff85;
+      color: #00ff85;
+    }
+    .section {
+      max-width: 1000px;
+      margin: auto;
+      padding: 60px 20px;
+    }
+    h2 {
+      text-align: center;
+      margin-bottom: 30px;
+    }
+    /* Beat Table */
+    .beat-table {
+      width: 100%;
+      border-collapse: collapse;
+      background: #111;
+      border-radius: 8px;
+      overflow: hidden;
+    }
+    .beat-table th,
+    .beat-table td {
+      padding: 15px;
+      text-align: left;
+    }
+    .beat-table th {
+      background: #1a1a1a;
+      color: #00ff85;
+      font-weight: bold;
+    }
+    .beat-table tr {
+      border-bottom: 1px solid #222;
+    }
+    .beat-table td {
+      color: #f5f5f5;
+    }
+    .play-btn {
+      cursor: pointer;
+      color: #00ff85;
+      font-size: 1.2em;
+      user-select: none;
+    }
+    .play-btn:focus {
+      outline: 2px solid #00ff85;
+      outline-offset: 2px;
+    }
+    /* Floating Player */
+    #mini-player {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      background: #111;
+      border-top: 2px solid #00ff85;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 10px 20px;
+      box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.5);
+      z-index: 999;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+    #mini-info {
+      display: flex;
+      flex-direction: column;
+      max-width: 200px;
+      min-width: 150px;
+    }
+    #mini-title {
+      font-weight: bold;
+      color: #00ff85;
+    }
+    #mini-controls {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+    #mini-controls button,
+    #buy-btn,
+    #playlist {
+      background: #00ff85;
+      color: #000;
+      border: none;
+      padding: 8px 12px;
+      border-radius: 4px;
+      cursor: pointer;
+      font-weight: bold;
+      user-select: none;
+    }
+    #buy-btn {
+      background: #ff0077;
+      color: #fff;
+      text-decoration: none;
+    }
+    #playlist {
+      color: #000;
+    }
+    #mini-wave {
+      flex: 1 1 300px;
+      margin: 0 15px;
+      min-width: 200px;
+    }
+    footer {
+      text-align: center;
+      padding: 15px;
+      background: #111;
+      color: #999;
+      font-size: 0.9em;
+    }
+  </style>
+</head>
+<body>
+  <!-- Hero Section -->
+  <div class="hero">
+    <h1>INDUSTRY-READY BEATS FOR ARTISTS WHO WANT TO STAND OUT.</h1>
+    <p>Afrobeat | Dancehall | TrapSoul | Custom Production</p>
+    <div class="buttons">
+      <a href="#beats" class="browse">BROWSE BEATS</a>
+      <a href="#contact" class="custom">GET CUSTOM BEAT</a>
+    </div>
+  </div>
+
+  <!-- Beat Table -->
+  <div class="section" id="beats">
+    <h2>BUY BEATS INSTANTLY</h2>
+    <table class="beat-table" role="grid" aria-label="Beat list">
+      <thead>
+        <tr>
+          <th scope="col"></th>
+          <th scope="col">Title</th>
+          <th scope="col">License</th>
+          <th scope="col">Price</th>
+          <th scope="col">BPM</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td
+            class="play-btn"
+            data-audio="beat1.mp3"
+            data-title="Sweet Vibe"
+            data-buy="https://www.beatstars.com/checkout/sweet-vibe"
+            tabindex="0"
+            role="button"
+            aria-label="Play Sweet Vibe"
+            >▶</td
+          >
+          <td>Sweet Vibe</td>
+          <td>Free</td>
+          <td>Free</td>
+          <td>98</td>
+        </tr>
+        <tr>
+          <td
+            class="play-btn"
+            data-audio="beat2.mp3"
+            data-title="Party Fever"
+            data-buy="https://www.beatstars.com/checkout/party-fever"
+            tabindex="0"
+            role="button"
+            aria-label="Play Party Fever"
+            >▶</td
+          >
+          <td>Party Fever</td>
+          <td>Lease</td>
+          <td>$29</td>
+          <td>100</td>
+        </tr>
+        <tr>
+          <td
+            class="play-btn"
+            data-audio="beat3.mp3"
+            data-title="Night Ride"
+            data-buy="https://www.beatstars.com/checkout/night-ride"
+            tabindex="0"
+            role="button"
+            aria-label="Play Night Ride"
+            >▶</td
+          >
+          <td>Night Ride</td>
+          <td>Exclusive</td>
+          <td>$95</td>
+          <td>92</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- Floating Mini Player -->
+  <div id="mini-player" role="region" aria-label="Audio player">
+    <div id="mini-info">
+      <span id="mini-title" aria-live="polite">No track loaded</span>
+      <select id="playlist" aria-label="Select track from playlist"></select>
+    </div>
+    <div id="mini-wave"></div>
+    <div id="mini-controls">
+      <button id="mini-play" aria-pressed="false" aria-label="Play or pause track">
+        Play
+      </button>
+      <button id="mini-stop" aria-label="Stop track">Stop</button>
+      <button id="shuffle-btn" aria-pressed="false" aria-label="Toggle shuffle mode">
+        🔀
+      </button>
+      <button id="repeat-btn" aria-pressed="false" aria-label="Toggle repeat mode">
+        🔁
+      </button>
+      <a
+        id="buy-btn"
+        href="#"
+        target="_blank"
+        rel="noopener"
+        aria-label="Buy current beat"
+        >Buy
+        Now</a
+      >
+    </div>
+  </div>
+
+  <footer>© 2025 CityJamBeats. All rights reserved.</footer>
+
+  <!-- Player Script -->
+  <script>
+    let miniWave = WaveSurfer.create({
+      container: '#mini-wave',
+      waveColor: '#00ff85',
+      progressColor: '#00cc66',
+      height: 50,
+      barWidth: 2,
+      responsive: true,
+    });
+
+    const playButtons = document.querySelectorAll('.play-btn');
+    const miniPlayBtn = document.getElementById('mini-play');
+    const miniStopBtn = document.getElementById('mini-stop');
+    const shuffleBtn = document.getElementById('shuffle-btn');
+    const repeatBtn = document.getElementById('repeat-btn');
+    const miniTitle = document.getElementById('mini-title');
+    const buyBtn = document.getElementById('buy-btn');
+    const playlistDropdown = document.getElementById('playlist');
+
+    let currentTrackIndex = null;
+    let tracks = Array.from(playButtons);
+    let isShuffle = false;
+    let isRepeat = false;
+
+    // Populate Playlist Dropdown
+    tracks.forEach((track, index) => {
+      let option = document.createElement('option');
+      option.value = index;
+      option.textContent = track.dataset.title;
+      playlistDropdown.appendChild(option);
+    });
+
+    // Load and play track
+    function loadTrack(index) {
+      if (index < 0 || index >= tracks.length) return;
+      const btn = tracks[index];
+      const audioSrc = btn.dataset.audio;
+      const trackTitle = btn.dataset.title;
+      const buyLink = btn.dataset.buy;
+
+      if (currentTrackIndex === index) {
+        // If same track, just toggle play/pause
+        if (miniWave.isPlaying()) {
+          miniWave.pause();
+          miniPlayBtn.textContent = 'Play';
+          miniPlayBtn.setAttribute('aria-pressed', 'false');
+        } else {
+          miniWave.play();
+          miniPlayBtn.textContent = 'Pause';
+          miniPlayBtn.setAttribute('aria-pressed', 'true');
+        }
+        return;
+      }
+
+      currentTrackIndex = index;
+      miniWave.load(audioSrc);
+      miniTitle.textContent = trackTitle;
+      buyBtn.href = buyLink;
+      playlistDropdown.value = index;
+
+      miniWave.on('ready', () => {
+        miniWave.play();
+        miniPlayBtn.textContent = 'Pause';
+        miniPlayBtn.setAttribute('aria-pressed', 'true');
+      });
+
+      miniWave.un('error');
+      miniWave.on('error', (e) => {
+        alert('Error loading audio: ' + e);
+        miniPlayBtn.textContent = 'Play';
+        miniPlayBtn.setAttribute('aria-pressed', 'false');
+        miniTitle.textContent = 'Error loading track';
+      });
+    }
+
+    // Play buttons click & keyboard support
+    playButtons.forEach((button, index) => {
+      button.addEventListener('click', () => loadTrack(index));
+      button.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          loadTrack(index);
+        }
+      });
+    });
+
+    // Playlist dropdown control
+    playlistDropdown.addEventListener('change', () => {
+      loadTrack(parseInt(playlistDropdown.value));
+    });
+
+    // Play/pause controls
+    miniPlayBtn.addEventListener('click', () => {
+      if (currentTrackIndex !== null) {
+        miniWave.playPause();
+        const playing = miniWave.isPlaying();
+        miniPlayBtn.textContent = playing ? 'Pause' : 'Play';
+        miniPlayBtn.setAttribute('aria-pressed', playing ? 'true' : 'false');
+      }
+    });
+    miniPlayBtn.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        miniPlayBtn.click();
+      }
+    });
+
+    miniStopBtn.addEventListener('click', () => {
+      miniWave.stop();
+      miniPlayBtn.textContent = 'Play';
+      miniPlayBtn.setAttribute('aria-pressed', 'false');
+    });
+    miniStopBtn.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        miniStopBtn.click();
+      }
+    });
+
+    // Shuffle button toggle
+    shuffleBtn.addEventListener('click', () => {
+      isShuffle = !isShuffle;
+      shuffleBtn.style.background = isShuffle ? '#008f5f' : '#00ff85';
+      shuffleBtn.setAttribute('aria-pressed', isShuffle ? 'true' : 'false');
+    });
+    shuffleBtn.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        shuffleBtn.click();
+      }
+    });
+
+    // Repeat button toggle
+    repeatBtn.addEventListener('click', () => {
+      isRepeat = !isRepeat;
+      repeatBtn.style.background = isRepeat ? '#008f5f' : '#00ff85';
+      repeatBtn.setAttribute('aria-pressed', isRepeat ? 'true' : 'false');
+    });
+    repeatBtn.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        repeatBtn.click();
+      }
+    });
+
+    // Autoplay next track with shuffle and repeat logic
+    miniWave.on('finish', () => {
+      if (isRepeat) {
+        loadTrack(currentTrackIndex); // Replay current track
+      } else if (isShuffle) {
+        let randomIndex;
+        do {
+          randomIndex = Math.floor(Math.random() * tracks.length);
+        } while (randomIndex === currentTrackIndex && tracks.length > 1);
+        loadTrack(randomIndex);
+      } else if (currentTrackIndex < tracks.length - 1) {
+        loadTrack(currentTrackIndex + 1);
+      } else {
+        miniPlayBtn.textContent = 'Play';
+        miniPlayBtn.setAttribute('aria-pressed', 'false');
+      }
+    });
+
+    // Auto load first track on page load
+    window.addEventListener('DOMContentLoaded', () => {
+      loadTrack(0);
+    });
+  </script>
+</body>
+</html>
